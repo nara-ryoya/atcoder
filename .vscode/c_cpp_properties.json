@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+          "name": "Mac",
+          "includePath": ["/usr/local/include/**", "./ac-library/**"],
+          "defines": [],
+          "macFrameworkPath": [],
+          "compilerPath": "/usr/bin/g++",
+          "cStandard": "gnu17",
+          "intelliSenseMode": "gcc-x64"
+        }
+      ],
+      "version": 4
+}
