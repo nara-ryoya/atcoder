@@ -161,18 +161,6 @@ P find_minimum_diff(vector<P> &vec, P target)
 }
 
 
-// ll op(ll a, ll b){ return std::min(a, b); }
-// ll e(){ return int(1e9)+1; }
-// ll mapping(ll f, ll x){ return x+f; }
-// ll composition(ll f, ll g){ return f+g; }
-// ll id(){ return 0; }
-// lazy_segtree<ll, op, e, ll, mapping, composition, id> seg(N);
-// https://atcoder.github.io/ac-library/document_ja/lazysegtree.html
-// 区間最小・区間和
-
-bool dbg = false;
-#define _dbg if (dbg)
-
 class tsort {
 public:
 	ll V;
@@ -270,6 +258,17 @@ vl dijkstra(vvvl &edges, ll N, ll start)
     return dist;
 }
 
+// ll op(ll a, ll b){ return std::min(a, b); }
+// ll e(){ return int(1e9)+1; }
+// ll mapping(ll f, ll x){ return x+f; }
+// ll composition(ll f, ll g){ return f+g; }
+// ll id(){ return 0; }
+// lazy_segtree<ll, op, e, ll, mapping, composition, id> seg(N);
+// https://atcoder.github.io/ac-library/document_ja/lazysegtree.html
+// 区間最小・区間和
+
+bool dbg = false;
+#define _dbg if (dbg)
 
 struct Comp
 {
