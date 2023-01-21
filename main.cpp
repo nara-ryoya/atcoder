@@ -160,12 +160,6 @@ P find_minimum_diff(vector<P> &vec, P target)
     return min(target - *(it - 1), (*it) - target);
 }
 
-struct Comp
-{
-
-    template <typename P>
-    bool operator()(vector<P> p1, vector<P> p2) { return p1[2] < p2[2]; };
-};
 
 // ll op(ll a, ll b){ return std::min(a, b); }
 // ll e(){ return int(1e9)+1; }
@@ -276,8 +270,21 @@ vl dijkstra(vvvl &edges, ll N, ll start)
     return dist;
 }
 
+
+struct Comp
+{
+
+    template <typename P>
+    bool operator()(vector<P> p1, vector<P> p2) {
+        if (p1[0] != p2[0]) return p1[0] > p2[0];
+        if (p1[2] != p2[2]) return p1[2] < p2[2];
+        return p1[1] <= p2[1];
+    };
+};
+
 int main()
 {
-    string S;
-    cin >> S;
+    string s;cin>>s;
+    print(s);
+
 }
