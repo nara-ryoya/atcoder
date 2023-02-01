@@ -1,0 +1,21 @@
+    vl n_count(N,0);
+    vvvl sum_count(H+1, vvl(W+1, vl(N, 0)));
+    ll a;
+    rep(h, H) {
+        rep(w, W) {
+            cin>>a;a--;
+            sum_count[h+1][w+1][a]++;
+            n_count[a]++;
+        }
+    }
+    rep(h, H) {
+        rep(w, W) {
+            rep(n, N) sum_count[h+1][w+1][n] += sum_count[h][w+1][n] + sum_count[h+1][w][n] - sum_count[h][w][n];
+        }
+    }
+
+    // 一つ大きく取って保持する
+    //sum_count[h][w] := h未満, w未満
+    //k<i≤k+h,l<j≤l+wの数は、sum_count[k+h][l+w] - sum_count[k][l+w] - sum_count[k+h][l] + sum_count[k][l]
+
+    https://atcoder.jp/contests/abc278/tasks/abc278_e
