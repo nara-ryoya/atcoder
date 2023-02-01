@@ -284,7 +284,6 @@ struct Comp
 
 int main()
 {
-    string s;cin>>s;
-    print(s);
+    return 0;
 
 }
