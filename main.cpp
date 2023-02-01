@@ -284,6 +284,7 @@ struct Comp
 
 int main()
 {
+    
     return 0;
 
 }
