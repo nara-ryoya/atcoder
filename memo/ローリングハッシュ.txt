@@ -1,0 +1,5 @@
+m = mod
+b = 20023
+が良さそう
+
+https://atcoder.jp/contests/abc284/submissions/38577942
