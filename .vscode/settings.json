@@ -76,5 +76,6 @@
       "typeindex": "cpp",
       "variant": "cpp"
     },
-    "nuxt.isNuxtApp": false
+    "nuxt.isNuxtApp": false,
+    "github.copilot.inlineSuggest.enable": false
   }
