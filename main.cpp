@@ -13,6 +13,7 @@ using sl = set<ll>;
 using vb = vector<bool>;
 using vvb = vector<vector<bool>>;
 using Grid = vector<string>;
+using vs = vector<string>;
 using heapl = priority_queue<ll, vl, greater<ll>>;
 constexpr ll mod = 1000000007;
 constexpr ll mod2 = 998244353;
@@ -260,6 +261,21 @@ vl dijkstra(vvvl &edges, ll N, ll start)
     return dist;
 }
 
+vl prime_table(ll max_val) {
+    vl table(max_val+1, -1);
+    FOR(n, 2, max_val+1) {
+        if (table[n] == -1) {
+            table[n] = n;
+            ll nn = n * 2;
+            while (nn < max_val+1) {
+                table[nn] = n;
+                nn+=n;
+            }
+        }
+    }
+    return table;
+}
+
 // ll op(ll a, ll b){ return std::min(a, b); }
 // ll e(){ return int(1e9)+1; }
 // ll mapping(ll f, ll x){ return x+f; }
@@ -286,6 +302,9 @@ struct Comp
 int main()
 {
     
+
+
+
     return 0;
 
 }
