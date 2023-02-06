@@ -261,14 +261,16 @@ vl dijkstra(vvvl &edges, ll N, ll start)
     return dist;
 }
 
-vl prime_table(ll max_val) {
-    vl table(max_val+1, -1);
+vl minimum_prime_table(ll max_val) {
+    vl table(max_val+1, inf);
+    table[0] = -1;
+    table[1] = -1;
     FOR(n, 2, max_val+1) {
-        if (table[n] == -1) {
+        if (table[n] == inf) {
             table[n] = n;
             ll nn = n * 2;
             while (nn < max_val+1) {
-                table[nn] = n;
+                chmin(table[nn], n);
                 nn+=n;
             }
         }
