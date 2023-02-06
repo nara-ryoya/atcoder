@@ -9,6 +9,7 @@ using vvvl = vector<vvl>;
 using ld = long double;
 using pl = pair<ll, ll>;
 using ml = map<ll, ll>;
+using sl = set<ll>;
 using vb = vector<bool>;
 using vvb = vector<vector<bool>>;
 using Grid = vector<string>;
