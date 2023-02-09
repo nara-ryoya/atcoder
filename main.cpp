@@ -22,6 +22,7 @@ constexpr ll inf = numeric_limits<ll>::max();
 #define rep(i, n) for (ll i = 0; i < (n); i++)
 #define FOR(i, n, m) for (ll i = n; i < (m); ++i)
 #define all(A) A.begin(), A.end()
+#define MP make_pair
 
 vl VL(ll N)
 {
