@@ -275,8 +275,24 @@ vl minimum_prime_table(ll max_val) {
                 nn+=n;
             }
         }
-    }
+    // }
+    // rep(i, N+2) {
+    //     if (dp[i] == inf) {
+        // return 0-1
+    //     }
+    // }
     return table;
+}
+
+vl LIS(ll N, vl &A) {
+    assert(A.size() == N);
+    vl dp(N+2, inf);
+    dp[0] = -inf;
+    for (ll a : A) {
+        auto iter = upper_bound(all(dp), a);
+        dp[distance(dp.begin(), iter)] = a;
+    }
+    return dp;
 }
 
 // ll op(ll a, ll b){ return std::min(a, b); }
