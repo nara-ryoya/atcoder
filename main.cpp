@@ -284,7 +284,7 @@ vl LIS(ll N, vl &A) {
     vl dp(N+2, inf);
     dp[0] = -inf;
     for (ll a : A) {
-        auto iter = upper_bound(all(dp), a);
+        auto iter = lower_bound(all(dp), a);
         dp[distance(dp.begin(), iter)] = a;
     }
     // ll N;cin>>N;
@@ -325,7 +325,6 @@ struct Comp
 int main()
 {
     
-
 
 
 
