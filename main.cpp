@@ -275,12 +275,7 @@ vl minimum_prime_table(ll max_val) {
                 nn+=n;
             }
         }
-    // }
-    // rep(i, N+2) {
-    //     if (dp[i] == inf) {
-        // return 0-1
-    //     }
-    // }
+    }
     return table;
 }
 
@@ -292,6 +287,15 @@ vl LIS(ll N, vl &A) {
         auto iter = upper_bound(all(dp), a);
         dp[distance(dp.begin(), iter)] = a;
     }
+    // ll N;cin>>N;
+    // vl A = VL(N);
+    // vl dp = LIS(N, A);
+    // // print_v(dp);
+    // rep(i, N+2) {
+    //     if (dp[i] == inf) {
+        // return i-1:
+    //     }
+    // }
     return dp;
 }
 
@@ -321,6 +325,7 @@ struct Comp
 int main()
 {
     
+
 
 
 
