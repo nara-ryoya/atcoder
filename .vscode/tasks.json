@@ -6,7 +6,7 @@
         {
             "label": "echo",
             "type": "shell",
-            "command": "g++ main.cpp -std=c++14 -I ac-library && ./a.out < test.txt",
+            "command": "g++ main.cpp -std=c++17 -I ac-library && ./a.out < test.txt",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
