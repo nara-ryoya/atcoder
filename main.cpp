@@ -308,6 +308,24 @@ vl LIS(ll N, vl &A) {
 // https://atcoder.github.io/ac-library/document_ja/lazysegtree.html
 // 区間最小・区間和
 
+// 和を計算するseg木
+// ll op(ll a, ll b){ return a + b; }
+// ll e(){ return 0; }
+// segtree<ll, op, e> seg(N);
+ 
+// 転倒数
+// ll op(ll a, ll b){ return a + b; }
+// ll e(){ return 0; }
+// ll N;cin>>N;
+// vl A = VL(N);
+// ll ans = 0;
+// segtree<ll, op, e> seg(N);
+// rep(i, N) {
+//     ans += i - seg.prod(0, A[i]+1);
+//     seg.set(A[i], seg.get(A[i]) + 1);
+// }
+// print(ans);
+
 bool dbg = false;
 #define _dbg if (dbg)
 
