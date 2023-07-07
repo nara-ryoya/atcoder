@@ -1,3 +1,4 @@
+#include <iostream>
 #include <atcoder/all>
 #include <bits/stdc++.h>
 using namespace std;
@@ -299,6 +300,12 @@ vl LIS(ll N, vl &A) {
     return dp;
 }
 
+struct Node {
+    ll val;
+    Node *parent;
+    vector<Node*> children;
+};
+
 // ll op(ll a, ll b){ return std::min(a, b); }
 // ll e(){ return int(1e9)+1; }
 // ll mapping(ll f, ll x){ return x+f; }
@@ -342,9 +349,8 @@ struct Comp
 
 int main()
 {
+    std::cin.tie(0)->sync_with_stdio(0);
     
-
-
 
     return 0;
 
