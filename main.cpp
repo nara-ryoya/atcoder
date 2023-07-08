@@ -280,6 +280,30 @@ vl minimum_prime_table(ll max_val) {
     return table;
 }
 
+class Compression {
+public:
+    vl A;
+    ml B;
+    Compression(){}
+    void add(ll a) {
+        A.push_back(a);
+    }
+    void build() {
+        sort(all(A));
+        A.erase(unique(all(A)), A.end());
+        rep(i, A.size()) {
+            B[A[i]] = i;
+        }
+    }
+    ll get(ll a) {
+        if (B.find(a) == B.end()) {
+            cout << "error" << endl;
+            exit(1);
+        }
+        return B[a];
+    }
+};
+
 vl LIS(ll N, vl &A) {
     assert(A.size() == N);
     vl dp(N+2, inf);
@@ -350,7 +374,7 @@ struct Comp
 int main()
 {
     std::cin.tie(0)->sync_with_stdio(0);
-    
+
 
     return 0;
 
