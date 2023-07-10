@@ -302,6 +302,9 @@ public:
         }
         return B[a];
     }
+    ll size() {
+        return B.size();
+    }
 };
 
 vl LIS(ll N, vl &A) {
