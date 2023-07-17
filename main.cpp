@@ -280,6 +280,32 @@ vl minimum_prime_table(ll max_val) {
     return table;
 }
 
+vvvl kruskal(vvvl &edges) {
+    ll N = edges.size();
+    vvl edges_list;
+    rep(n, N) {
+        for (vl e : edges[n]) {
+            ll cost = e[0];
+            ll to = e[1];
+            edges_list.push_back({cost, n, to});
+        }
+    }
+    sort(all(edges_list));
+    dsu d(N);
+    vvvl ans(N);
+    for (vl e : edges_list) {
+        ll cost = e[0], from = e[1], to = e[2];
+        if (d.same(from, to)) continue;
+        d.merge(from, to);
+        ans[from].push_back({cost, to});
+    }
+    if (d.groups().size() > 1) {
+        return {};
+    }
+    return ans;
+
+}
+
 class Compression {
 public:
     vl A;
