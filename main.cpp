@@ -263,22 +263,57 @@ vl dijkstra(vvvl &edges, ll N, ll start)
     return dist;
 }
 
-vl minimum_prime_table(ll max_val) {
-    vl table(max_val+1, inf);
-    table[0] = -1;
-    table[1] = -1;
-    FOR(n, 2, max_val+1) {
-        if (table[n] == inf) {
-            table[n] = n;
-            ll nn = n * 2;
-            while (nn < max_val+1) {
-                chmin(table[nn], n);
-                nn+=n;
+class Eratosthenes {
+    // 注意: エラトステネスの篩は，大きい数（10^6以上）に対しては使えない
+    // 大きい数を素因数分解するときは，↓のprime_factorization関数を使う
+    private:
+        ll max_val;
+        vl table;
+    public:
+        Eratosthenes(ll max_val = 1000000) : max_val(max_val), table(max_val+1, inf) {
+            table[0] = -1;
+            table[1] = -1;
+            FOR(n, 2, max_val+1) {
+                if (table[n] == inf) {
+                    table[n] = n;
+                    ll nn = n * 2;
+                    while (nn < max_val+1) {
+                        chmin(table[nn], n);
+                        nn+=n;
+                    }
+                }
             }
         }
-    }
-    return table;
-}
+        vl get_table() { return table; }
+        vl prime_factorization(ll n) {
+            // nを素因数分解し，素因数を列挙する
+            // o(log(n))
+            assert(n <= max_val);
+            vl ans;
+            while (n != 1) {
+                ans.push_back(table[n]);
+                n /= table[n];
+            }
+            return ans;
+        }
+        vl get_primes(ll n) {
+            // n以下の素数を列挙する
+            // o(n)
+            assert(n <= max_val);
+            vl ans;
+            FOR(i, 2, n+1) {
+                if (table[i] == i) ans.push_back(i);
+            }
+            return ans;
+        }
+        bool is_prime(ll n) {
+            // nが素数かどうか判定する
+            // o(1)
+            assert(n <= max_val);
+            return table[n] == n;
+        }
+        ll get_max_val() { return max_val; }
+};
 
 vl prime_factorization(ll n) {
     // nを素因数分解し，素因数を列挙する
