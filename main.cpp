@@ -281,6 +281,8 @@ vl minimum_prime_table(ll max_val) {
 }
 
 vl prime_factorization(ll n) {
+    // nを素因数分解し，素因数を列挙する
+    // o(sqrt(n))
     ll rem = n;
     vl ans;
     for (ll i = 2; i*i <= n; i++) {
