@@ -280,6 +280,19 @@ vl minimum_prime_table(ll max_val) {
     return table;
 }
 
+vl prime_factorization(ll n) {
+    ll rem = n;
+    vl ans;
+    for (ll i = 2; i*i <= n; i++) {
+        while (rem % i == 0) {
+            ans.push_back(i);
+            rem /= i;
+        }
+    }
+    if (rem != 1) ans.push_back(rem);
+    return ans;
+}
+
 vvvl kruskal(vvvl &edges) {
     ll N = edges.size();
     vvl edges_list;
