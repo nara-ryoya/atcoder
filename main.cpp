@@ -383,6 +383,31 @@ public:
     }
 };
 
+class GridCumulativeSum {
+    private:
+        vvl original;
+        vvl cum_table;
+        ll H, W;
+    public:
+    GridCumulativeSum(vvl original) : original(original) {
+        H = original.size();
+        W = original[0].size();
+        cum_table = vvl(H+1, vl(W+1, 0));
+        rep(h, H) {
+            rep(w, W) {
+                cum_table[h+1][w+1] = cum_table[h+1][w] + cum_table[h][w+1] - cum_table[h][w] + original[h][w];
+            }
+        }
+    }
+    ll query(ll h, ll dh, ll w, ll dw) {
+        // [h, h+dh) x [w, w+dw)の範囲の和を求める
+        assert(h+dh <= H && w+dw <= W);
+        assert(dh > 0 && dw > 0);
+        assert(h >= 0 && w >= 0);
+        return cum_table[h+dh][w+dw] - cum_table[h][w+dw] - cum_table[h+dh][w] + cum_table[h][w];
+    }
+};
+
 vl LIS(ll N, vl &A) {
     assert(A.size() == N);
     vl dp(N+2, inf);
