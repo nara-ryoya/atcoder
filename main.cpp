@@ -263,6 +263,21 @@ vl dijkstra(vvvl &edges, ll N, ll start)
     return dist;
 }
 
+vvl warshall_floyd(vvl E) {
+    ll H = E.size(), W = E[0].size();
+    assert(H == W);
+    rep(h, H) assert(E[h][h] == 0);
+    vvl retval = E;
+    rep(i, H) {
+        rep(h, H) {
+            rep(w, H) {
+                chmin(retval[h][w], retval[h][i] + retval[i][w]);
+            }
+        }
+    }
+    return retval;
+}
+
 class Eratosthenes {
     // 注意: エラトステネスの篩は，大きい数（10^6以上）に対しては使えない
     // 大きい数を素因数分解するときは，↓のprime_factorization関数を使う
