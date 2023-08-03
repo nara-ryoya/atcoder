@@ -386,13 +386,18 @@ public:
             B[A[i]] = i;
         }
     }
-    ll get(ll a) {
+    ll idx(ll a) {
         if (B.find(a) == B.end()) {
             cout << "error" << endl;
             exit(1);
         }
         return B[a];
     }
+
+    ll val(ll idx) {
+        return A[idx];
+    }
+
     ll size() {
         return B.size();
     }
