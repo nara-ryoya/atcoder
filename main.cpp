@@ -467,6 +467,26 @@ struct Node {
 // ll op(ll a, ll b){ return a + b; }
 // ll e(){ return 0; }
 // segtree<ll, op, e> seg(N);
+
+// 区間加算操作・区間和取得のlazy_segtree
+// struct S{
+//     ll value;
+//     ll size;
+// };
+// using F = ll;
+// S op(S a, S b){ return {a.value+b.value, a.size+b.size}; }
+// S e(){ return {0, 0}; }
+// S mapping(F f, S x){ return {x.value+x.size*f, x.size}; }
+// F composition(F f, F g){ return f+g; }
+// F id(){ return 0; }
+//使用例
+// int main(){
+//     ll n = 5;
+//     vector<S> v(n, {0, 1});
+//     lazy_segtree<S, op, e, F, mapping, composition, id> seg(v);
+
+//     seg.apply(l, r, v)//A[l]からA[r-1]までの全ての要素にvを足す
+// }
  
 // 転倒数
 // ll op(ll a, ll b){ return a + b; }
