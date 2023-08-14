@@ -454,6 +454,12 @@ struct Node {
     vector<Node*> children;
 };
 
+// vector<Node*> nodes(N);
+// rep(n, N) {
+        // nodes[n] = new Node{0, nullptr, {}};
+    // }
+// 参考: https://atcoder.jp/contests/abc314/submissions/44597285
+
 // ll op(ll a, ll b){ return std::min(a, b); }
 // ll e(){ return int(1e9)+1; }
 // ll mapping(ll f, ll x){ return x+f; }
