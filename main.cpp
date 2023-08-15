@@ -371,6 +371,61 @@ vvvl kruskal(vvvl &edges) {
 
 }
 
+/* LCA(G, root): 木 G に対する根を root として Lowest Common Ancestor を求める構造体
+    query(u,v): u と v の LCA を求める。計算量 O(logn)
+    前処理: O(nlogn)時間, O(nlogn)空間
+*/
+struct LCA {
+    vector<vector<ll>> parent;  // parent[k][u]:= u の 2^k 先の親
+    vector<ll> dist;            // root からの距離
+    LCA(const vvl &G, ll root = 0) { init(G, root); } // 有向グラフ(木構造)で初期化する
+    // 初期化
+    void init(const vvl &G, ll root = 0) {
+        ll V = G.size();
+        ll K = 1;
+        while ((1 << K) < V) K++;
+        parent.assign(K, vector<ll>(V, -1));
+        dist.assign(V, -1);
+        dfs(G, root, -1, 0);
+        for (ll k = 0; k + 1 < K; k++) {
+            for (ll v = 0; v < V; v++) {
+                if (parent[k][v] < 0) {
+                    parent[k + 1][v] = -1;
+                } else {
+                    parent[k + 1][v] = parent[k][parent[k][v]];
+                }
+            }
+        }
+    }
+    // 根からの距離と1つ先の頂点を求める
+    void dfs(const vvl &G, ll v, ll p, ll d) {
+        parent[0][v] = p;
+        dist[v] = d;
+        for (auto e : G[v]) {
+            if (e != p) dfs(G, e, v, d + 1);
+        }
+    }
+    ll query(ll u, ll v) {
+        if (dist[u] < dist[v]) swap(u, v);  // u の方が深いとする
+        ll K = parent.size();
+        // LCA までの距離を同じにする
+        for (ll k = 0; k < K; k++) {
+            if ((dist[u] - dist[v]) >> k & 1) {
+                u = parent[k][u];
+            }
+        }
+        // 二分探索で LCA を求める
+        if (u == v) return u;
+        for (ll k = K - 1; k >= 0; k--) {
+            if (parent[k][u] != parent[k][v]) {
+                u = parent[k][u];
+                v = parent[k][v];
+            }
+        }
+        return parent[0][u];
+    }
+};
+
 class Compression {
 public:
     vl A;
@@ -506,61 +561,6 @@ struct Node {
 //     seg.set(A[i], seg.get(A[i]) + 1);
 // }
 // print(ans);
-
-/* LCA(G, root): 木 G に対する根を root として Lowest Common Ancestor を求める構造体
-    query(u,v): u と v の LCA を求める。計算量 O(logn)
-    前処理: O(nlogn)時間, O(nlogn)空間
-*/
-struct LCA {
-    vector<vector<ll>> parent;  // parent[k][u]:= u の 2^k 先の親
-    vector<ll> dist;            // root からの距離
-    LCA(const vvl &G, ll root = 0) { init(G, root); } // 有向グラフ(木構造)で初期化する
-    // 初期化
-    void init(const vvl &G, ll root = 0) {
-        ll V = G.size();
-        ll K = 1;
-        while ((1 << K) < V) K++;
-        parent.assign(K, vector<ll>(V, -1));
-        dist.assign(V, -1);
-        dfs(G, root, -1, 0);
-        for (ll k = 0; k + 1 < K; k++) {
-            for (ll v = 0; v < V; v++) {
-                if (parent[k][v] < 0) {
-                    parent[k + 1][v] = -1;
-                } else {
-                    parent[k + 1][v] = parent[k][parent[k][v]];
-                }
-            }
-        }
-    }
-    // 根からの距離と1つ先の頂点を求める
-    void dfs(const vvl &G, ll v, ll p, ll d) {
-        parent[0][v] = p;
-        dist[v] = d;
-        for (auto e : G[v]) {
-            if (e != p) dfs(G, e, v, d + 1);
-        }
-    }
-    ll query(ll u, ll v) {
-        if (dist[u] < dist[v]) swap(u, v);  // u の方が深いとする
-        ll K = parent.size();
-        // LCA までの距離を同じにする
-        for (ll k = 0; k < K; k++) {
-            if ((dist[u] - dist[v]) >> k & 1) {
-                u = parent[k][u];
-            }
-        }
-        // 二分探索で LCA を求める
-        if (u == v) return u;
-        for (ll k = K - 1; k >= 0; k--) {
-            if (parent[k][u] != parent[k][v]) {
-                u = parent[k][u];
-                v = parent[k][v];
-            }
-        }
-        return parent[0][u];
-    }
-};
 
 
 bool dbg = false;
