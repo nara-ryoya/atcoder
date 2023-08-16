@@ -77,5 +77,5 @@
       "variant": "cpp"
     },
     "nuxt.isNuxtApp": false,
-    "github.copilot.inlineSuggest.enable": true
+    "github.copilot.inlineSuggest.enable": false
   }
