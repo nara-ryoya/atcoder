@@ -171,6 +171,7 @@ public:
 	ll V;
 	vvl G;
 	vl deg,res;
+    vl ans;
 	tsort(ll node_size) : V(node_size), G(V), deg(V, 0){}
 	void add_edge(ll from,ll to){
 		G[from].push_back(to);
@@ -185,6 +186,7 @@ public:
 		}
 		while(!que.empty()){
 			ll p = que.front();
+            ans.push_back(p);
 			que.pop();
 			res.push_back(p);
 			for(ll v : G[p]){
@@ -195,6 +197,10 @@ public:
 		}
 		return (*max_element(deg.begin(),deg.end()) == 0);
 	}
+
+    vl get_ans(){
+        return ans;
+    }
 };
 
 vl bfs(vvl &edges, ll N, ll start){
