@@ -577,8 +577,8 @@ struct Comp
 
     template <typename P>
     bool operator()(vector<P> p1, vector<P> p2) {
-        if (p1[0] != p2[0]) return p1[0] > p2[0];
-        if (p1[2] != p2[2]) return p1[2] < p2[2];
+        if (p1[0] != p2[0]) return p1[0] > p2[0]; // 0番目の要素については昇順
+        if (p1[2] != p2[2]) return p1[2] < p2[2]; // 2番目の要素については降順
         return p1[1] <= p2[1];
     };
 };
