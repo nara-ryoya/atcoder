@@ -489,8 +489,9 @@ class GridCumulativeSum {
     }
 };
 
-vl LIS(ll N, vl &A) {
-    assert(A.size() == N);
+vl LIS(vl &A) {
+    // assert(A.size() == N);
+    ll N = A.size();
     vl dp(N+2, inf);
     dp[0] = -inf;
     for (ll a : A) {
