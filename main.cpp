@@ -616,19 +616,7 @@ struct Comp
 int main()
 {std::cin.tie(0)->sync_with_stdio(0);
 
-    ll N;cin>>N;
-    vl C = VL(N), X = VL(N);
-    vvl V(N);
-    rep(n, N) {
-        V[C[n]-1].push_back(X[n]-1);
-    }
-    ll ans = cound_inversion_number(X);
-    rep(n, N) {
-        if (V[n].size() <= 1) continue;
-        ans -= cound_inversion_number(V[n]);
-    }
-    print(ans);
-
+    
 
     return 0;
 
