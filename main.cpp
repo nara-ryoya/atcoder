@@ -569,7 +569,22 @@ struct Node {
 
 //     seg.apply(l, r, v)//A[l]からA[r-1]までの全ての要素にvを足す
 // }
- 
+
+ll cound_inversion_number(vl &A) {
+    ll N = A.size();
+    auto cmp = Compression();
+    for (ll a : A) cmp.add(a);
+    cmp.build();
+    rep(n, N) A[n] = cmp.idx(A[n]);
+
+    auto seg = SumSeg(N);
+    ll ans = 0;
+    rep(i, N) {
+        ans += i - seg.prod(0, A[i]+1);
+        seg.set(A[i], seg.get(A[i])+1);
+    }
+    return ans;
+}
 // 転倒数
 // ll op(ll a, ll b){ return a + b; }
 // ll e(){ return 0; }
@@ -601,7 +616,18 @@ struct Comp
 int main()
 {std::cin.tie(0)->sync_with_stdio(0);
 
-    
+    ll N;cin>>N;
+    vl C = VL(N), X = VL(N);
+    vvl V(N);
+    rep(n, N) {
+        V[C[n]-1].push_back(X[n]-1);
+    }
+    ll ans = cound_inversion_number(X);
+    rep(n, N) {
+        if (V[n].size() <= 1) continue;
+        ans -= cound_inversion_number(V[n]);
+    }
+    print(ans);
 
 
     return 0;
