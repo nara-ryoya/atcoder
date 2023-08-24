@@ -25,6 +25,20 @@ constexpr ll inf = numeric_limits<ll>::max();
 #define all(A) A.begin(), A.end()
 #define MP make_pair
 
+ll _op_sum(ll a, ll b){ return a + b; }
+ll _e_sum(){ return 0; }
+using SumSeg = segtree<ll, _op_sum, _e_sum>;
+
+ll _op_min(ll a, ll b) { return min(a, b);}
+ll _e_min(){ return inf;}
+using MinSeg = segtree<ll, _op_min, _e_min>;
+
+ll _op_max(ll a, ll b) { return max(a, b);}
+ll _e_max(){ return 0;}
+using MaxSeg = segtree<ll, _op_max, _e_max>;
+
+
+
 vl VL(ll N)
 {
     vl A(N);
