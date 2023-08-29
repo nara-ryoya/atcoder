@@ -18,7 +18,7 @@ using vs = vector<string>;
 using heapl = priority_queue<ll, vl, greater<ll>>;
 constexpr ll mod = 1000000007;
 constexpr ll mod2 = 998244353;
-constexpr ll inf = numeric_limits<ll>::max();
+constexpr ll inf = 4e+18;
 #define umap unordered_map
 #define rep(i, n) for (ll i = 0; i < (n); i++)
 #define FOR(i, n, m) for (ll i = n; i < (m); ++i)
